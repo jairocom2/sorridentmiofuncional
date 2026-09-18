@@ -1,24 +1,51 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import Navbar from "@/components/landing/Navbar";
+import Hero from "@/components/landing/Hero";
+import PainPoints from "@/components/landing/PainPoints";
+import Education from "@/components/landing/Education";
+import Solution from "@/components/landing/Solution";
+import Transformation from "@/components/landing/Transformation";
+import Differentiation from "@/components/landing/Differentiation";
+import Objections from "@/components/landing/Objections";
+import FinalCTA from "@/components/landing/FinalCTA";
+import Footer from "@/components/landing/Footer";
+
+const title = "Sorri&Dent | Tratamento Miofuncional Infantil";
+const description =
+  "Seu filho ronca, respira pela boca ou tem dentes tortos? Descubra o tratamento miofuncional que transforma respiração, sono e autoestima.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      {
+        property: "og:description",
+        content: "Cuidamos do sorriso, da respiração e do futuro do seu filho.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="min-h-screen bg-background">
+      <Navbar />
+      <Hero />
+      <PainPoints />
+      <Education />
+      <Solution />
+      <Transformation />
+      <Differentiation />
+      <Objections />
+      <FinalCTA />
+      <Footer />
+    </main>
   );
 }
