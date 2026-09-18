@@ -77,6 +77,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "color-scheme", content: "only light" },
+      { name: "theme-color", content: "#ffffff" },
       { title: "Sorri&Dent | Tratamento Miofuncional Infantil" },
       {
         name: "description",
@@ -108,11 +110,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR" style={{ colorScheme: "only light", backgroundColor: "white" }}>
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="bg-background text-foreground">
         {children}
         <Scripts />
       </body>
