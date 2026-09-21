@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import logoAsset from "../assets/logo-sorrident.png.asset.json";
 
 function NotFoundComponent() {
   return (
@@ -86,7 +87,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "Sorri&Dent" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: logoAsset.url },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:image", content: logoAsset.url },
     ],
     links: [
       {
